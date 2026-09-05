@@ -1,17 +1,15 @@
 # Organizr
 
-> Replace every angle-bracket placeholder below. The hygiene check in CI will
-> fail until you do.
 
 ## Author
 
 | Roll No. | Name | GitHub username |
 |---|---|---|
-| 24ESKCS128 | Garvita Govind | garvitagovind01 |
+| 24ESKCS134 | Geetika Chauhan| Geetika223 |
 
 ## About
 
-Organizr is a task management web application that allows users to create, manage, search, update, and delete tasks. It provides a centralized platform for organizing tasks and managing work efficiently.
+Task Management System is a web application designed to help users create, manage, search, update, and delete tasks. It provides a centralized platform for organizing tasks and managing work efficiently.
 
 ## Tech stack
 
