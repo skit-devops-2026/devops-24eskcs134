@@ -10,6 +10,7 @@ test -f Contact.html
 test -f About_Us.html
 test -f Help_Centre.html
 test -f Search.html
+test -f Privacy_Policy.html
 
 test -f Style/Index.css
 test -f Style/Home.css
