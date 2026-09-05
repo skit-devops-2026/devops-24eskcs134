@@ -8,6 +8,7 @@ test -f Index.html
 test -f Home.html
 test -f Contact.html
 test -f About_Us.html
+test -f Help_Centre.html
 
 test -f Style/Index.css
 test -f Style/Home.css
