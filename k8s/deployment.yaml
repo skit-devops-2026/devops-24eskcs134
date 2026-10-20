@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-web
+  labels:
+    app: devops-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-web
+  template:
+    metadata:
+      labels:
+        app: devops-web
+    spec:
+      containers:
+        - name: web
+          image: geetika223/devops-24eskcs134-web:latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
