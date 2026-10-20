@@ -1,0 +1,31 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devops-24eskcs134-web
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+
+  nginx-exporter:
+    image: nginx/nginx-prometheus-exporter:1.4.2
+    container_name: devops-24eskcs134-exporter
+    command:
+      - --nginx.scrape-uri=http://web:80/stub_status
+    ports:
+      - "9113:9113"
+    depends_on:
+      - web
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    container_name: devops-24eskcs134-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - nginx-exporter
+    restart: unless-stopped
