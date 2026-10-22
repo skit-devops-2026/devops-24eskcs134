@@ -26,8 +26,9 @@ make run
 
 ## Live URL
 
-<Add once M5 is done. Until then, leave as is.>
+**Live Website:** [Open DevOps Project](https://devops-24eskcs134-web.onrender.com)
 
+**Docker Hub Image:** [devops-24eskcs134-web](https://hub.docker.com/r/geetika223/devops-24eskcs134-web)
 ## Health endpoint
 
 `GET /health` returns the running commit SHA. See `Makefile` and the milestone
