@@ -43,28 +43,32 @@ jobs:
   # The push to the registry is what proves your build actually ran, so it is
   # not optional.
   # ---------------------------------------------------------------------------
+docker:
+name: Build and push image to GHCR
+needs: build-and-test
+runs-on: ubuntu-latest
+permissions:
+contents: read
+packages: write
 
-  # docker:
-  #   name: Build and push images
-  #   needs: build-and-test
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: read
-  #     packages: write
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: docker/login-action@v3
-  #       with:
-  #         registry: ghcr.io
-  #         username: ${{ github.actor }}
-  #         password: ${{ secrets.GITHUB_TOKEN }}
-  #     - uses: docker/build-push-action@v6
-  #       with:
-  #         context: ./backend
-  #         push: true
-  #         tags: ghcr.io/${{ github.repository }}-backend:${{ github.sha }}
-  #     # ... and the same for ./frontend
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v4
 
+  - name: Log in to GitHub Container Registry
+    uses: docker/login-action@v3
+    with:
+      registry: ghcr.io
+      username: ${{ github.actor }}
+      password: ${{ secrets.GITHUB_TOKEN }}
+
+  - name: Build and push Docker image
+    uses: docker/build-push-action@v6
+    with:
+      context: .
+      push: true
+      tags: ghcr.io/${{ github.repository }}:latest
+  
   # ---------------------------------------------------------------------------
   # M5 — Deployment. Add a deploy job here.
   # ---------------------------------------------------------------------------
